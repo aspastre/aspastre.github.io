@@ -57,6 +57,27 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
+        /* INÍCIO DO CSS DO CARD EM DESTAQUE */
+        .card.featured {
+            grid-column: 1 / -1;
+        }
+        .featured-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2px;
+            background-color: #333;
+        }
+        .featured-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+            transition: opacity 0.3s ease;
+        }
+        .featured-gallery img:hover {
+            opacity: 0.8;
+        }
+        /* FIM DO CSS DO CARD EM DESTAQUE */
         .card {
             background-color: #1e1e1e;
             border-radius: 8px;
@@ -67,3 +88,105 @@
         .card:hover {
             transform: translateY(-5px);
         }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.2em;
+            margin-top: 0;
+            color: #ffffff;
+        }
+        .card-desc {
+            font-size: 0.9em;
+            color: #bbbbbb;
+        }
+        .download-btn {
+            display: block;
+            width: 280px;
+            margin: 50px auto;
+            padding: 15px;
+            text-align: center;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .download-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Adriano Pastre</h1>
+    <h2>Design de Interiores & Modelagem 3D</h2>
+    <div class="contact-info">
+        São Paulo, SP | (11) 93354-9981 | <a href="mailto:aspastre@gmail.com">aspastre@gmail.com</a> | <a href="https://www.linkedin.com/in/aspastre" target="_blank">LinkedIn</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="summary">
+        <p>Portfólio técnico focado em precisão executiva, modelagem volumétrica, gestão de dados espaciais e fluxos avançados de documentação (BIM/CAD).</p>
+    </div>
+
+    <div class="grid">
+        <div class="card featured">
+            <div class="featured-gallery">
+                <img src="nuvem-de-pontos.png" alt="1. Nuvem de Pontos Bruta" title="Fase 1: Nuvem de Pontos">
+                <img src="cogo-points.png" alt="2. Criação de CoGo Points" title="Fase 2: Processamento de CoGo Points">
+                <img src="geolocalizacao-pontos.png" alt="3. Geolocalização Final" title="Fase 3: Geolocalização e Terreno">
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">Levantamento e As-Built (Fluxo Completo)</h3>
+                <p class="card-desc">Verificação métrica de alta precisão e modelagem de infraestrutura. O processo demonstra a extração da <strong>Nuvem de Pontos</strong> bruta (ReCap), a criação e processamento analítico de <strong>CoGo Points</strong>, e a amarração topográfica com <strong>Geolocalização</strong> e elevações reais de terreno (Civil 3D/Revit).</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="construction-docs.jpg" alt="Documentação Executiva">
+            <div class="card-content">
+                <h3 class="card-title">Projeto Executivo</h3>
+                <p class="card-desc">Elaboração de pranchas executivas rigorosas, cortes e detalhamentos utilizando ecossistemas AutoCAD e Revit.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="spatial-planning.jpg" alt="Estudos de Layout">
+            <div class="card-content">
+                <h3 class="card-title">Estudos de Layout e Paginação</h3>
+                <p class="card-desc">Distribuição de fluxos, layout de mobiliário, plantas de gesso, iluminação e paginação de superfícies.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="render.jpg" alt="Renderização 3D">
+            <div class="card-content">
+                <h3 class="card-title">Maquete Eletrônica e Render</h3>
+                <p class="card-desc">Estudos de iluminação e renderização fotorrealista em tempo real utilizando Twinmotion, D5 Render e SketchUp.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="project-analytics.jpg" alt="Gestão e Viabilidade">
+            <div class="card-content">
+                <h3 class="card-title">Gestão e Quantitativos</h3>
+                <p class="card-desc">Estruturação de orçamentos, levantamento de quantitativos e estudos de viabilidade através de Excel Avançado e Power BI.</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="Adriano_Pastre_Work_Samples.pdf" class="download-btn" target="_blank">Baixar Portfólio Completo (PDF)</a>
+
+</div>
+
+</body>
+</html>
