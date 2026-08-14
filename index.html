@@ -76,10 +76,10 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            margin-bottom: 150px; /* Grande respiro entre projetos */
+            margin-bottom: 150px;
         }
         .project-section:nth-child(even) {
-            flex-direction: row-reverse; /* Inverte o lado no projeto par */
+            flex-direction: row-reverse;
         }
         
         .project-text {
@@ -119,14 +119,14 @@
             transform: scale(1.02);
         }
 
-        /* GALERIA ESPECÍFICA PARA SCAN-TO-BIM */
+        /* GALERIAS COM COMPOSIÇÃO DE IMAGENS */
         .collage {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
         .collage img:first-child {
-            grid-column: 1 / -1; /* Primeira imagem larga */
+            grid-column: 1 / -1;
         }
 
         /* BOTÃO DE DOWNLOAD */
@@ -186,7 +186,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
-        /* RESPONSIVIDADE (CELULAR) */
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .project-section, .project-section:nth-child(even) {
@@ -230,91 +230,7 @@
         <div class="project-text">
             <span class="project-number">02</span>
             <h2 class="project-title">Documentação<br>Executiva</h2>
-            <p class="project-desc">Desenvolvimento de pranchas executivas rigorosas, com foco em legibilidade construtiva e padronização avançada de layers e detalhamentos (AutoCAD e Revit).</p>
+            <p class="project-desc">Desenvolvimento de pranchas executivas rigorosas, com foco em legibilidade construtiva, vistas verticais, cortes técnicos e padronização de layers (AutoCAD e Revit).</p>
         </div>
-        <div class="project-visuals">
-            <img src="construction-docs.png" alt="Projeto Executivo" class="zoomable">
-        </div>
-    </section>
-
-    <section class="project-section reveal">
-        <div class="project-text">
-            <span class="project-number">03</span>
-            <h2 class="project-title">Estudos de<br>Layout</h2>
-            <p class="project-desc">Distribuição inteligente de fluxos residenciais e comerciais, paginação de superfícies e otimização de espaços através de planejamento estratégico.</p>
-        </div>
-        <div class="project-visuals">
-            <img src="spatial-planning.png" alt="Estudo de Layout" class="zoomable">
-        </div>
-    </section>
-
-    <section class="project-section reveal">
-        <div class="project-text">
-            <span class="project-number">04</span>
-            <h2 class="project-title">Visualização<br>Fotorrealista</h2>
-            <p class="project-desc">Estudos de iluminação natural e artificial para validação estética com o cliente. Renderização em tempo real utilizando Twinmotion, D5 Render e SketchUp.</p>
-        </div>
-        <div class="project-visuals">
-            <img src="render.png" alt="Renderização 3D" class="zoomable">
-        </div>
-    </section>
-
-    <section class="project-section reveal">
-        <div class="project-text">
-            <span class="project-number">05</span>
-            <h2 class="project-title">Gestão &<br>Quantitativos</h2>
-            <p class="project-desc">Aplicação de inteligência de dados na arquitetura. Estruturação de orçamentos, extração de quantitativos e estudos de viabilidade via Excel Avançado.</p>
-        </div>
-        <div class="project-visuals">
-            <img src="project-analytics.png" alt="Planilhas e Dashboards" class="zoomable">
-        </div>
-    </section>
-
-</main>
-
-<footer class="footer-action reveal">
-    <a href="Adriano_Pastre_Work_Samples.pdf" class="download-btn" target="_blank">Baixar Portfólio em PDF</a>
-</footer>
-
-<dialog id="lightboxModal" class="lightbox">
-    <img id="lightboxImg" src="" alt="Imagem ampliada">
-</dialog>
-
-<script>
-    // 1. LIGHTBOX (ZOOM NAS IMAGENS)
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    const images = document.querySelectorAll('.zoomable');
-
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            modalImg.src = img.src;
-            modalImg.alt = img.alt;
-            modal.showModal();
-        });
-    });
-
-    modal.addEventListener('click', () => {
-        modal.close();
-    });
-
-    // 2. SCROLL REVEAL (ANIMAÇÃO AO ROLAR A PÁGINA)
-    function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 100; // Distância para ativar a animação
-            
-            if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
-            }
-        }
-    }
-    // Dispara no scroll e no carregamento da página
-    window.addEventListener("scroll", reveal);
-    reveal();
-</script>
-
-</body>
-</html>
+        <div class="project-visuals collage">
+            <img src="planta-cotas.png"
