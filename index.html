@@ -233,4 +233,87 @@
             <p class="project-desc">Desenvolvimento de pranchas executivas rigorosas, com foco em legibilidade construtiva, vistas verticais, cortes técnicos e padronização de layers (AutoCAD e Revit).</p>
         </div>
         <div class="project-visuals collage">
-            <img src="planta-cotas.png"
+            <img src="planta-cotas.png" alt="Planta de Cotas Gerais" class="zoomable">
+            <img src="planta-detalhada.png" alt="Planta Detalhada" class="zoomable">
+            <img src="corte-tecnico.png" alt="Corte Técnico Executivo" class="zoomable">
+        </div>
+    </section>
+
+    <section class="project-section reveal">
+        <div class="project-text">
+            <span class="project-number">03</span>
+            <h2 class="project-title">Estudos de<br>Layout</h2>
+            <p class="project-desc">Distribuição inteligente de fluxos residenciais e comerciais, paginação de superfícies e otimização de espaços através de planejamento estratégico.</p>
+        </div>
+        <div class="project-visuals">
+            <img src="spatial-planning.png" alt="Estudo de Layout" class="zoomable">
+        </div>
+    </section>
+
+    <section class="project-section reveal">
+        <div class="project-text">
+            <span class="project-number">04</span>
+            <h2 class="project-title">Visualização<br>Fotorrealista</h2>
+            <p class="project-desc">Estudos de iluminação natural e artificial para validação estética com o cliente. Renderização em tempo real utilizando Twinmotion, D5 Render e SketchUp.</p>
+        </div>
+        <div class="project-visuals">
+            <img src="render.png" alt="Renderização 3D" class="zoomable">
+        </div>
+    </section>
+
+    <section class="project-section reveal">
+        <div class="project-text">
+            <span class="project-number">05</span>
+            <h2 class="project-title">Gestão &<br>Quantitativos</h2>
+            <p class="project-desc">Aplicação de inteligência de dados na arquitetura. Estruturação de orçamentos, extração de quantitativos e estudos de viabilidade via Excel Avançado.</p>
+        </div>
+        <div class="project-visuals">
+            <img src="project-analytics.png" alt="Planilhas e Dashboards" class="zoomable">
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer-action reveal">
+    <a href="Adriano_Pastre_Work_Samples.pdf" class="download-btn" target="_blank">Baixar Portfólio em PDF</a>
+</footer>
+
+<dialog id="lightboxModal" class="lightbox">
+    <img id="lightboxImg" src="" alt="Imagem ampliada">
+</dialog>
+
+<script>
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const images = document.querySelectorAll('.zoomable');
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            modal.showModal();
+        });
+    });
+
+    modal.addEventListener('click', () => {
+        modal.close();
+    });
+
+    function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 100;
+            
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+</script>
+
+</body>
+</html>
