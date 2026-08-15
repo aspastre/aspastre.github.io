@@ -85,6 +85,7 @@
         .project-text {
             flex: 1 1 300px;
             padding: 40px;
+            box-sizing: border-box;
         }
         .project-number {
             font-size: 0.8rem;
@@ -97,6 +98,7 @@
             font-size: 2rem;
             font-weight: 400;
             margin: 0 0 20px 0;
+            line-height: 1.2;
         }
         .project-desc {
             font-size: 0.95rem;
@@ -106,6 +108,7 @@
 
         .project-visuals {
             flex: 2 1 600px;
+            box-sizing: border-box;
         }
         .project-visuals img {
             width: 100%;
@@ -140,7 +143,7 @@
         .footer-action {
             text-align: center;
             padding: 100px 20px;
-            background-color: #fff;
+            background-color: var(--bg-color);
         }
         .download-btn {
             display: inline-block;
@@ -156,17 +159,6 @@
         .download-btn:hover {
             background: var(--accent);
             color: #fff;
-        }
-
-        /* ANIMAÇÃO DE SCROLL (REVEAL) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* MODAL DE ZOOM (LIGHTBOX) */
@@ -193,15 +185,61 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
 
-        /* RESPONSIVIDADE */
+        /* ANIMAÇÃO DE SCROLL (REVEAL) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           RESPONSIVIDADE (CELULARES E TABLETS)
+           ========================================= */
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 0.85rem; }
+            .contact-info { display: flex; flex-direction: column; gap: 5px; }
+            
+            /* Quebra a assimetria e empilha tudo */
             .project-section, .project-section:nth-child(even) {
                 flex-direction: column;
                 margin-bottom: 80px;
             }
-            .project-text { padding: 20px 0; }
+            .project-text { 
+                padding: 0 0 20px 0; 
+                flex: none;
+                width: 100%;
+            }
+            .project-desc { max-width: 100%; }
+            .project-visuals { 
+                flex: none;
+                width: 100%;
+            }
             .portfolio-wrapper { padding: 0 20px; }
+            
+            /* Empilha as imagens das galerias para não ficarem minúsculas */
+            .collage, .diptych {
+                grid-template-columns: 1fr;
+            }
+            .collage img:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* =========================================
+           CONFIGURAÇÃO PARA IMPRESSÃO / GERAR PDF
+           ========================================= */
+        @media print {
+            body { background-color: #fff; color: #000; }
+            header { height: auto; padding: 100px 0; page-break-after: always; }
+            .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+            .project-section { margin-bottom: 60px; page-break-inside: avoid; }
+            .footer-action { display: none; } /* Esconde o botão de baixar no PDF */
+            .project-visuals img { box-shadow: none; border: 1px solid #eee; }
         }
     </style>
 </head>
@@ -220,6 +258,7 @@
 
 <main class="portfolio-wrapper">
 
+    <!-- PROJETO 01: SCAN-TO-BIM -->
     <section class="project-section reveal">
         <div class="project-text">
             <span class="project-number">01</span>
@@ -233,6 +272,7 @@
         </div>
     </section>
 
+    <!-- PROJETO 02: EXECUTIVO -->
     <section class="project-section reveal">
         <div class="project-text">
             <span class="project-number">02</span>
@@ -246,6 +286,7 @@
         </div>
     </section>
 
+    <!-- PROJETO 03: LAYOUT -->
     <section class="project-section reveal">
         <div class="project-text">
             <span class="project-number">03</span>
@@ -257,6 +298,7 @@
         </div>
     </section>
 
+    <!-- PROJETO 04: RENDER (DÍPTICO) -->
     <section class="project-section reveal">
         <div class="project-text">
             <span class="project-number">04</span>
@@ -269,6 +311,7 @@
         </div>
     </section>
 
+    <!-- PROJETO 05: GESTÃO -->
     <section class="project-section reveal">
         <div class="project-text">
             <span class="project-number">05</span>
@@ -286,10 +329,12 @@
     <a href="Adriano_Pastre_Work_Samples.pdf" class="download-btn" target="_blank">Baixar Portfólio em PDF</a>
 </footer>
 
+<!-- MODAL DE ZOOM -->
 <dialog id="lightboxModal" class="lightbox">
     <img id="lightboxImg" src="" alt="Imagem ampliada">
 </dialog>
 
+<!-- SCRIPTS -->
 <script>
     const modal = document.getElementById('lightboxModal');
     const modalImg = document.getElementById('lightboxImg');
@@ -312,15 +357,18 @@
         for (var i = 0; i < reveals.length; i++) {
             var windowHeight = window.innerHeight;
             var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 100;
+            var elementVisible = 50; 
             
             if (elementTop < windowHeight - elementVisible) {
                 reveals[i].classList.add("active");
             }
         }
     }
-    window.addEventListener("scroll", reveal);
-    reveal();
+    // Desativa a animação se for para impressão
+    if (!window.matchMedia('print').matches) {
+        window.addEventListener("scroll", reveal);
+        reveal();
+    }
 </script>
 
 </body>
